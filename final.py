@@ -30,7 +30,7 @@ print ("1817501")
 
 for i in range (500):
     model = load_model('/home/adil/NN_Project/keras/my_model.h5')
-    DATA_PATH = "/home/adil/NN_Project/keras/data/"
+    DATA_PATH = "/home/adil/NN_Project/keras/dataset/"
 
     FORMAT = pyaudio.paInt16
     CHANNELS = 1
@@ -117,4 +117,4 @@ for i in range (500):
     predict_dir = "/home/adil/NN_Project/keras/record.wav"
     print("prediction = "+predict(predict_dir, model=model))
     print("\n \n ================================================= \n \n ================================================= \n \n")
-# python -W ignore final.py 2>/dev/null 
+# python -W ignore final.py 2>/dev/null
