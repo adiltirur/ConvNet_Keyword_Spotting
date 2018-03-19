@@ -19,7 +19,7 @@ Once you have downloaded the dataset copy it into the data folder in the reposit
 
 ## Building it From Scratch
 
-So so to build the model from scratch, change the DATA_PATH variable in the nn_final_full.py to the Main folder of your dataset and on the last line in the predicit_fuction point change the /home/adil/NeuralNetwork/validation_data/Shrilakshmi/bed.ogg to any of the audio files in the validation_data folder or you can use one of your recordings.
+So so to build the model from scratch, change the DATA_PATH variable in the nn_final_full.py to the Main folder of your dataset and on the last line in the predicit_fuction point change the /home/adil/NeuralNetwork/validation_data/Satvika/bed.ogg to any of the audio files in the validation_data folder or you can use one of your recordings.
 
 ## Using the Pre-trained Model
 
