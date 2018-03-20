@@ -5,7 +5,7 @@ from keras.models import load_model
 from keras.utils import to_categorical
 from tqdm import tqdm
 
-
+#For MFCC
 import librosa
 
 import os
@@ -16,25 +16,25 @@ from sklearn.model_selection import train_test_split
 
 import numpy as np
 
-
+#For the audo recordings
 import pyaudio
 import wave
 
 import time
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'# to not log tf cpu error
 
 print ("Neural Network Project")
 print ("Convelutional Neural Network For Keyword Spotting")
 print ("Adil Chakkala paramba")
 print ("1817501")
 
-for i in range (500):
+for i in range (500):#Running the model just more # times
     model = load_model('/home/adil/NN_Project/keras/my_model.h5')
-    DATA_PATH = "/home/adil/NN_Project/keras/dataset/"
+    DATA_PATH = "/home/adil/NN_Project/keras/data/"
 
     FORMAT = pyaudio.paInt16
-    CHANNELS = 1
-    RATE = 16000
+    CHANNELS = 1#Mono
+    RATE = 16000#Information bits per second
     CHUNK = 1024
     RECORD_SECONDS = 1
     WAVE_OUTPUT_FILENAME = "/home/adil/NN_Project/keras/record.wav"
@@ -52,7 +52,7 @@ for i in range (500):
 
     for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
         data = stream.read(CHUNK)
-        frames.append(data)
+        frames.append(data)#Recording the audio
     #print "finished recording"
 
 
@@ -68,7 +68,7 @@ for i in range (500):
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
 
-    def get_model():
+    def get_model():#Building the network with Downsampling
         model = Sequential()
         model.add(Conv2D(32, kernel_size=(2, 2), activation='relu', input_shape=(feature_dim_1, feature_dim_2, channel)))
         model.add(Conv2D(48, kernel_size=(2, 2), activation='relu'))
@@ -86,14 +86,14 @@ for i in range (500):
                       metrics=['accuracy'])
         return model
 
-    def predict(filepath, model):
+    def predict(filepath, model):#The prediction function
         sample = wav2mfcc(filepath)
         sample_reshaped = sample.reshape(1, 20, 11, 1)
         return get_labels()[0][
                 np.argmax(model.predict(sample_reshaped))
         ]
 
-    def wav2mfcc(file_path, max_len=11):
+    def wav2mfcc(file_path, max_len=11):#The MFCC convert function
         wave, sr = librosa.load(file_path, mono=True, sr=None)
         wave = wave[::3]
         mfcc = librosa.feature.mfcc(wave, sr=16000)

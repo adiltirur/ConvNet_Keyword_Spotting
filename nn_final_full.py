@@ -36,7 +36,7 @@ def wav2mfcc(file_path, max_len=11):
 
     return mfcc
 
-
+#Saving the npy array
 def save_data_to_array(path=DATA_PATH, max_len=11):
     labels, _, _ = get_labels(path)
 
@@ -67,7 +67,7 @@ def get_train_test(split_ratio=0.6, random_state=42):
     return train_test_split(X, y, test_size= (1 - split_ratio), random_state=random_state, shuffle=True)
 
 
-
+#Openning and parsing the audio files
 def prepare_dataset(path=DATA_PATH):
     labels, _, _ = get_labels(path)
     data = {}
@@ -137,7 +137,7 @@ def predict(filepath, model):
             np.argmax(model.predict(sample_reshaped))
     ]
 
-
+####Prediction from scatch
 """print(model.output.op.name)
 saver = tf.train.Saver()
 saver.save(K.get_session(), '/adil/NeuralNetwork/models/keras_model.ckpt')
