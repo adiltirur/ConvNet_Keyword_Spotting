@@ -36,4 +36,7 @@ Note in the pre-trained model I have only trained 11 speeches, they are :
 * eight
 * nine
 
-So to use this You can Run the program final.py and change model = load_model('/home/adil/NN_Project/keras/my_model.h5') to model = load_model(<to my_mdel.h5 in the model directory of the repository\>) and also WAVE_OUTPUT_FILENAME to <any directory you want\record.wav> also copy paste the same directory path to the third last line predict_dir
+So to use this You can Run the program 
+```
+final.py and change model = load_model('/home/adil/NN_Project/keras/my_model.h5') to model = load_model(<to my_mdel.h5 in the model directory of the repository\>) and also WAVE_OUTPUT_FILENAME to <any directory you want\record.wav> also copy paste the same directory path to the third last line predict_dir
+```
